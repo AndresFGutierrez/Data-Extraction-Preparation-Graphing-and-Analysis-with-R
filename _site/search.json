@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Análisis COVID-19 en Colombia: Resúmenes Estadísticos y Visualización de Datos",
+    "section": "",
+    "text": "Sitio web donde mostraremos lo realizado en el reto 3"
+  },
+  {
+    "objectID": "index.html#del-marco-de-datos-escoge-dos-variables-y-elabora-una-tabla-resumen-con-las-medidas-descriptivas-que-consideres-pertinentes.",
+    "href": "index.html#del-marco-de-datos-escoge-dos-variables-y-elabora-una-tabla-resumen-con-las-medidas-descriptivas-que-consideres-pertinentes.",
+    "title": "Análisis COVID-19 en Colombia: Resúmenes Estadísticos y Visualización de Datos",
+    "section": "1- Del marco de datos escoge dos variables y elabora una tabla resumen con las medidas descriptivas que consideres pertinentes.",
+    "text": "1- Del marco de datos escoge dos variables y elabora una tabla resumen con las medidas descriptivas que consideres pertinentes.\n\ndf_resumen &lt;- df_covid_modificado %&gt;% \n  group_by(Estado) %&gt;% \n  summarise(cantidad = n(),\n            Min = min(x=Edad,na.rm = TRUE),\n            First_Qu = quantile(x = Edad, probs = 0.25, na.rm = TRUE),\n            Median = median(x = Edad, na.rm = TRUE),\n            Mean = mean(x = Edad,na.rm = TRUE),\n            Third_Qu = quantile(x = Edad, probs = 0.75,na.rm = TRUE),\n            Max = max(x = Edad,na.rm = TRUE)\n  )\n\nkable(df_resumen) %&gt;%\n  kable_styling(\"striped\")\n\n\n\n\nEstado\ncantidad\nMin\nFirst_Qu\nMedian\nMean\nThird_Qu\nMax\n\n\n\n\nFallecido\n26\n20\n65.25\n75.0\n71.73077\n82\n97\n\n\nLeve\n963\n1\n26.00\n36.0\n38.21599\n50\n98\n\n\nN/A\n4\n40\n59.50\n73.5\n68.00000\n82\n85\n\n\nleve\n7\n22\n29.50\n34.0\n38.00000\n44\n63"
+  },
+  {
+    "objectID": "index.html#elabora-una-tabla-resumen-de-la-variable-edad-con-las-medidas-descriptivas-que-consideres-necesarias.",
+    "href": "index.html#elabora-una-tabla-resumen-de-la-variable-edad-con-las-medidas-descriptivas-que-consideres-necesarias.",
+    "title": "Análisis COVID-19 en Colombia: Resúmenes Estadísticos y Visualización de Datos",
+    "section": "2- Elabora una tabla resumen de la variable Edad con las medidas descriptivas que consideres necesarias.",
+    "text": "2- Elabora una tabla resumen de la variable Edad con las medidas descriptivas que consideres necesarias.\n\ndf_resumen_edad &lt;- df_covid_modificado %&gt;%\n  summarise(\n    cantidad = n(),  # total\n    Min = min(Edad, na.rm = TRUE),  # Minimo\n    Max = max(Edad, na.rm = TRUE),  # Maximo\n    First_Qu = quantile(Edad, probs = 0.25, na.rm = TRUE),  # Primer cuartil\n    Third_Qu = quantile(Edad, probs = 0.75, na.rm = TRUE),  # Tercer cuartil\n    Median = median(Edad, na.rm = TRUE),  # Mediana\n    Mean = mean(Edad, na.rm = TRUE),  # Media\n    Varianza = var(Edad, na.rm = TRUE),  # Varianza\n    Desviacion_Estandar = sd(Edad, na.rm = TRUE),  # Desviación estandar\n    Rango_Intercuartilico = IQR(Edad, na.rm = TRUE),  # Rango intercuartilico\n    Coeficiente_Variacion = sd(Edad, na.rm = TRUE) / mean(Edad, na.rm = TRUE),  # Coeficiente de variacion\n  )\n\nkable(df_resumen_edad) %&gt;%\n  kable_styling(\"striped\")\n\n\n\n\ncantidad\nMin\nMax\nFirst_Qu\nThird_Qu\nMedian\nMean\nVarianza\nDesviacion_Estandar\nRango_Intercuartilico\nCoeficiente_Variacion\n\n\n\n\n1000\n1\n98\n26\n51\n37\n39.205\n348.1251\n18.65811\n25\n0.4759115"
+  },
+  {
+    "objectID": "index.html#agrupa-los-registros-por-departamento-y-calcula-el-total-de-casos-para-cada-uno.",
+    "href": "index.html#agrupa-los-registros-por-departamento-y-calcula-el-total-de-casos-para-cada-uno.",
+    "title": "Análisis COVID-19 en Colombia: Resúmenes Estadísticos y Visualización de Datos",
+    "section": "3- Agrupa los registros por departamento y calcula el total de casos para cada uno.",
+    "text": "3- Agrupa los registros por departamento y calcula el total de casos para cada uno.\n\ndf_cant_dpto &lt;- df_covid_modificado %&gt;% \n  group_by(`Nombre departamento`) %&gt;% \n  summarise(Total_Casos = n()) %&gt;% \n  arrange(desc(Total_Casos))\n\nkable(df_cant_dpto) %&gt;%\n  kable_styling(\"striped\")\n\n\n\n\nNombre departamento\nTotal_Casos\n\n\n\n\nBOGOTA\n319\n\n\nANTIOQUIA\n159\n\n\nVALLE\n89\n\n\nCUNDINAMARCA\n45\n\n\nSANTANDER\n40\n\n\nBARRANQUILLA\n31\n\n\nRISARALDA\n23\n\n\nNARIÑO\n22\n\n\nATLANTICO\n21\n\n\nCARTAGENA\n21\n\n\nNORTE SANTANDER\n21\n\n\nCALDAS\n20\n\n\nMETA\n19\n\n\nCESAR\n18\n\n\nHUILA\n18\n\n\nSTA MARTA D.E.\n18\n\n\nTOLIMA\n18\n\n\nBOYACA\n16\n\n\nCORDOBA\n16\n\n\nQUINDIO\n13\n\n\nCAUCA\n12\n\n\nSUCRE\n9\n\n\nCASANARE\n5\n\n\nGUAJIRA\n5\n\n\nMAGDALENA\n4\n\n\nBOLIVAR\n3\n\n\nCAQUETA\n3\n\n\nPUTUMAYO\n3\n\n\nCHOCO\n2\n\n\nSAN ANDRES\n2\n\n\nVICHADA\n2\n\n\nARAUCA\n1\n\n\nGUAINIA\n1\n\n\nGUAVIARE\n1\n\n\n\n\n\n\n\n\nADICION (no lo indica el reto)\n\nGrafico de el punto anterior\n\nggplot(df_cant_dpto, aes(x = reorder(`Nombre departamento`, -Total_Casos), y = Total_Casos)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  labs(title = \"Total de Casos por Departamento\",\n       x = \"Departamento\",\n       y = \"Total de Casos\") +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1))"
+  },
+  {
+    "objectID": "index.html#con-el-resultado-anterior-filtra-los-departamentos-con-menor-y-mayor-número-de-casos.",
+    "href": "index.html#con-el-resultado-anterior-filtra-los-departamentos-con-menor-y-mayor-número-de-casos.",
+    "title": "Análisis COVID-19 en Colombia: Resúmenes Estadísticos y Visualización de Datos",
+    "section": "4- Con el resultado anterior filtra los departamentos con menor y mayor número de casos.",
+    "text": "4- Con el resultado anterior filtra los departamentos con menor y mayor número de casos.\n\nDepartementos con menor cantidad de casos\n\ndf_men_cant &lt;- df_cant_dpto %&gt;% \n  filter(Total_Casos == min(Total_Casos))\n\nkable(df_men_cant) %&gt;%\n  kable_styling(\"striped\")\n\n\n\n\nNombre departamento\nTotal_Casos\n\n\n\n\nARAUCA\n1\n\n\nGUAINIA\n1\n\n\nGUAVIARE\n1\n\n\n\n\n\n\n\n\nADICION (no lo indica el reto)\n\nGrafico de el punto anterior\n\nggplot(df_men_cant, aes(x = reorder(`Nombre departamento`, -Total_Casos), y = Total_Casos)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  labs(title = \"Departementos con menor cantidad de casos\",\n       x = \"Departamento\",\n       y = \"Total de Casos\") +\n  theme_minimal() \n\n\n\n\n\n\n\n\n\n\n\n\nDepartementos con mayor cantidad de casos\n\ndf_may_cant &lt;- df_cant_dpto %&gt;% \n  filter(Total_Casos == max(Total_Casos))\n\nkable(df_may_cant) %&gt;%\n  kable_styling(\"striped\")\n\n\n\n\nNombre departamento\nTotal_Casos\n\n\n\n\nBOGOTA\n319\n\n\n\n\n\n\n\n\nADICION (no lo indica el reto)\n\nGrafico de el punto anterior\n\nggplot(df_may_cant, aes(x = reorder(`Nombre departamento`, -Total_Casos), y = Total_Casos)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  labs(title = \"Departementos con mayor cantidad de casos\",\n       x = \"Departamento\",\n       y = \"Total de Casos\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]

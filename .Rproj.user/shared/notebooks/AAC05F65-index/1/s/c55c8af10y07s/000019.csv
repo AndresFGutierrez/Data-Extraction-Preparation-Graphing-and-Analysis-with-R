@@ -1,0 +1,7 @@
+"0","ggplot(df_cant_dpto, aes(x = reorder(`Nombre departamento`, -Total_Casos), y = Total_Casos)) +"
+"0","  geom_bar(stat = ""identity"", fill = ""steelblue"") +"
+"0","  labs(title = ""Total de Casos por Departamento"","
+"0","       x = ""Departamento"","
+"0","       y = ""Total de Casos"") +"
+"0","  theme_minimal() +"
+"0","  theme(axis.text.x = element_text(angle = 90, hjust = 1))"

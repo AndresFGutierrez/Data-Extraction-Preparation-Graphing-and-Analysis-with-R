@@ -1,0 +1,5 @@
+"0","df_may_cant <- df_cant_dpto %>% "
+"0","  filter(Total_Casos == max(Total_Casos))"
+"0",""
+"0","kable(df_may_cant) %>%"
+"0","  kable_styling(""striped"")"

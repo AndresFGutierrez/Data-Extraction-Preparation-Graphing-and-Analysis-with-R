@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  title: "Análisis COVID-19: Reto 5 - Estadísticas y Visualización de Datos"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+    right:
+      - icon: github
+        href: https://github.com/AndresFGutierrez
+
+format:
+  html:
+    theme: journal
+    css: styles.css
+    toc: true
+    toc-title: "Índice"  # Título del índice
+    toc-depth: 2  # Profundidad del índice
+    meta:
+      description: "Sitio web con análisis COVID-19 para el Reto 5: Estadísticas y visualización de datos en R."
+      keywords: "COVID-19, análisis de datos, R, estadística, visualización, departamentos, Colombia"
+      robots: "index, follow"
+      viewport: "width=device-width, initial-scale=1.0"  # Ajustar el sitio a pantallas móviles
+
+editor: visual
+

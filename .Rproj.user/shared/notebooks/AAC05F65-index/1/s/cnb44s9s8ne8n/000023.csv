@@ -1,0 +1,2 @@
+"0","kable(df_covid_modificado, options = list(scrollX = TRUE), scrollY = ""400px"") %>%"
+"0","  kable_styling(""striped"", full_width = F)"

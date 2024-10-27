@@ -1,0 +1,7 @@
+"0","df_cant_dpto <- df_covid_modificado %>% "
+"0","  group_by(`Nombre departamento`) %>% "
+"0","  summarise(Total_Casos = n()) %>% "
+"0","  arrange(desc(Total_Casos))"
+"0",""
+"0","kable(df_cant_dpto) %>%"
+"0","  kable_styling(""striped"")"

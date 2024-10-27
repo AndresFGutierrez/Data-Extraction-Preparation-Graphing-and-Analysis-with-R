@@ -1,0 +1,5 @@
+"0","df_men_cant <- df_cant_dpto %>% "
+"0","  filter(Total_Casos == min(Total_Casos))"
+"0",""
+"0","kable(df_men_cant) %>%"
+"0","  kable_styling(""striped"")"
